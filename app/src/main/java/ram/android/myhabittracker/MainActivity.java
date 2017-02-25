@@ -6,6 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import ram.android.myhabittracker.data.HabitContract;
 import ram.android.myhabittracker.data.HabitTrackerDBHelper;
@@ -23,14 +28,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dbHelper = new HabitTrackerDBHelper(this);
-        insertHabit("Gardening", 120);
-        insertHabit("Gaming", 200);
-        insertHabit("Yoga", 60);
-        insertHabit("Gaming", 45);
-        readHabits("Gaming");
-        deleteEntries();
-        insertHabit("Cycling", 45);
-        insertHabit("Walking", 60);
+
+        Button samplebutton = (Button) findViewById(R.id.button);
+        samplebutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v)
+            {
+                EditText samplePersonEditTextView = (EditText) findViewById(R.id.title);
+                String habitName = samplePersonEditTextView.getText().toString();
+
+                EditText durationtxt = (EditText) findViewById(R.id.edittext3);
+                String habitDurationtxt = durationtxt.getText().toString();
+                int habitDuration = Integer.parseInt(habitDurationtxt);
+
+                insertHabit(habitName, habitDuration);
+                //hello
+
+
+            }
+
+        });
+
     }
 
     //Insert method for making an entry to the habit tracker database
@@ -70,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             } while (c.moveToNext());
             Log.v("Result of query ", result);
         }
+        TextView textview = (TextView) findViewById(R.id.textview1);
+        textview.setText(result);
+
         c.close();
     }
 

@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MyHabitTracker</string>
+    <string name="title">type here</string>
+    <string name="duration">type here</string>
+    <string name="view1">ENTER YOUR HOBBIES</string>
+    <string name="view2">DURATION</string>
+    <string name="button">create</string>
+    <string name="m5">next</string>
+    <string name="view3">type here</string>
+    <string name="abcd">the hobby is</string>
+
+
+
+
 </resources>
